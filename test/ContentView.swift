@@ -9,13 +9,82 @@
 import SwiftUI
 
 struct ContentView: View {
+    var friends:[Friend]=[Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),
+    Friend(withName: "Ashutosh", withStatus: "Online"),]
+    @State var active:Bool=false
+    
+    
     var body: some View {
-        Text("Hello, World!")
-    }
+   
+        NavigationView {
+            
+            
+            
+            List(friends) { friend in
+                
+                
+                
+                NavigationLink(destination: DetailView(data: testData)){
+                HStack{
+                    
+                    VStack(alignment: .leading) {
+                        Text(friend.name).fontWeight(.bold)
+                        
+                        Text(friend.status).italic()
+                    }
+                    
+                 
+                    
+                    if (friend.status=="online"){
+                        Circle()
+                        Image(systemName:"photo")
+                        
+                    }
+                    else {
+                        Circle().fill(Color.red).padding(12)
+                        
+                        Image(systemName:"video")
+                        
+                    }
+                    
+                }
+                }
+                
+               
+        }
+            .navigationBarTitle("Friends")
+        
+        }
+        
+        
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        
+        Group{
+            ContentView(friends:testData)
+        }
+            
+
+            
+        
     }
+}
+
+
+    func testFunc() {
+        print("blah")
+    }
+    
 }
